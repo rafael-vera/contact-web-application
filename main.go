@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/rafael-vera/contact-web-application/database"
@@ -13,7 +14,7 @@ func main() {
 
 	database.ConnectDB()
 
-	app.Static("/", "public/")
+	app.Static("/", os.Getenv("GOPATH")+os.Args[1])
 	router.SetUpRoutes(app)
 
 	log.Fatal(app.Listen(":80"))
