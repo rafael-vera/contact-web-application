@@ -55,21 +55,29 @@ func UpdateContact(c *fiber.Ctx) error {
 			"data":    nil,
 		})
 	}
-	return c.SendStatus(fiber.StatusAccepted)
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"status":  "Success",
+		"message": "Se modificó el contacto",
+		"data":    nil,
+	})
 }
 
 func DeleteContact(c *fiber.Ctx) error {
 	id, err := c.ParamsInt("id")
 	if err != nil {
-		c.SendStatus(fiber.StatusUnauthorized)
+		return c.SendStatus(fiber.StatusUnauthorized)
 	}
 	err = queries.DeleteContact(id)
 	if err != nil {
-		c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"status":  "Error",
 			"message": "Ocurrió un error eliminando el contacto",
 			"data":    nil,
 		})
 	}
-	return c.SendStatus(fiber.StatusAccepted)
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"status":  "Success",
+		"message": "Se eliminó el contacto",
+		"data":    nil,
+	})
 }

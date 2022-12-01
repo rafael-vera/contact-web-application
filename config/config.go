@@ -22,11 +22,12 @@ func Database(userEnvName, passwdEnvName string) mysql.Config {
 	}
 
 	return mysql.Config{
-		User:      user,
-		Passwd:    password,
-		Net:       "tcp",
-		Addr:      "127.0.0.1:3306",
-		DBName:    "contacts",
-		Collation: "utf8_general_ci",
+		User:                 user,
+		Passwd:               password,
+		Net:                  "tcp",
+		Addr:                 "127.0.0.1:3306",
+		DBName:               "contacts",
+		Collation:            "utf8_general_ci",
+		AllowNativePasswords: true,
 	}
 }
