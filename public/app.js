@@ -1,3 +1,5 @@
+const IP = "44.201.176.125";
+
 function estructuraTabla() {
     return `<table id="tabla" class="table table-striped table-bordered text-center">
                 <thead>
@@ -56,7 +58,7 @@ function formularioEditarContacto(id, nombre, telefono, correo) {
 }
 
 function getContactos() {
-    const URL = 'http://localhost/api/contacts/';
+    const URL = `http://${IP}/api/contacts/`;
     const API = new XMLHttpRequest();
     API.open('GET', URL, true);
     API.send();
@@ -130,7 +132,7 @@ function getContactos() {
 }
 
 function createContacto(nombre, telefono, correo) {
-    const URL = 'http://localhost/api/contacts/';
+    const URL = `http://${IP}/api/contacts/`;
     const API = new XMLHttpRequest();
     API.open('POST', URL, true);
     API.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -161,7 +163,7 @@ function createContacto(nombre, telefono, correo) {
 }
 
 function updateContacto(id, nombre, telefono, correo) {
-    const URL = `http://localhost/api/contacts/`;
+    const URL = `http://${IP}/api/contacts/`;
     const API = new XMLHttpRequest();
     API.open('PUT', URL, true);
     API.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -193,7 +195,7 @@ function updateContacto(id, nombre, telefono, correo) {
 }
 
 function deleteContacto(id) {
-    const URL = `http://localhost/api/contacts/${id}`;
+    const URL = `http://${IP}/api/contacts/${id}`;
     const API = new XMLHttpRequest();
     API.open('DELETE', URL, true);
     API.send();
