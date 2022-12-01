@@ -11,7 +11,7 @@ import (
 var DB *sql.DB
 
 func ConnectDB() {
-	cfg := config.Database("", "")
+	cfg := config.Database("", "DBPASSWORD")
 	var err error
 
 	DB, err = sql.Open("mysql", cfg.FormatDSN())
